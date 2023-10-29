@@ -28,6 +28,7 @@ export function UserContextProvider({ children }: UserContextProps) {
       .then(response => {
         setId(response.data.userId)
         setUsername(response.data.username);
+        console.log(id, username, 'userContext', response.data)
       })
       .catch(error => {
         console.log('error on userContext: ',error);
