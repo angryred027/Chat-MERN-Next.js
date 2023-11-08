@@ -1,5 +1,12 @@
 import axios from "axios";
-import { createContext, ReactNode, Dispatch, SetStateAction, useState, useEffect } from "react";
+import {
+  createContext,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+} from "react";
 
 interface UserContextProps {
   children: ReactNode;
@@ -24,16 +31,17 @@ export function UserContextProvider({ children }: UserContextProps) {
   const [id, setId] = useState<string | null>(null);
 
   useEffect((): void => {
-    axios.get('/profile')
-      .then(response => {
-        setId(response.data.userId)
+    axios
+      .get("/profile")
+      .then((response) => {
+        setId(response.data.userId);
         setUsername(response.data.username);
-        console.log(id, username, 'userContext', response.data)
+        console.log(id, username, "userContext", response.data);
       })
-      .catch(error => {
-        console.log('error on userContext: ',error);
-      })
-  }, [])
+      .catch((error) => {
+        console.log("error on userContext: ", error);
+      });
+  }, []);
 
   return (
     <UserContext.Provider value={{ username, setUsername, id, setId }}>
