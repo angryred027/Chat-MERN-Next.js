@@ -12,7 +12,7 @@ export default function Chat() {
   );
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [newMessageText, setNewMessageText] = useState<string>("");
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<unknown[]>([]);
   const { username, id } = useContext(UserContext);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function Chat() {
     } else if ("text" in messageData) {
       setMessages((prev) => [
         ...prev,
-        { isOur: false, text: messageData.text },
+        { ...messageData },
       ]);
     }
   }
@@ -58,7 +58,7 @@ export default function Chat() {
       }),
     );
     setNewMessageText("");
-    setMessages((prev) => [...prev, { text: newMessageText, isOur: true }]);
+    setMessages((prev) => [...prev, { text: newMessageText, sender: id, recipient: selectedUserId, id: Date.now() }]);
   }
 
   const onlinePeopleExclOurUser = { ...onlinePeople };
@@ -98,9 +98,12 @@ export default function Chat() {
             </div>
           )}
           {!!selectedUserId && (
-            <div>
-              {messages.map((message) => (
-                <div>{message.text}</div>
+            <div className='overflow-y-scroll'>
+              {messagesWithoutDupes.map((message) => (
+                <div className={(message.sender === id ? 'text-right' : 'text-left')}>
+                  <div className={"text-left inline-block p-2 my-2 rounded-md text-sm" + (message.sender === id ? 'bg-blue-500 text-white' : 'bg-white text-gray-500')}>sender: {message.sender}<br />ID: {id}<br />{message.text}</div>
+                </div>
+                
               ))}
             </div>
           )}
