@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "npx prettier . --write",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.27.1",
@@ -26,8 +28,14 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
     "postcss": "^8",
+    "prettier": "3.0.3",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
