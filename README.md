@@ -1,14 +1,8 @@
+## Threads App Clone
+### description
+
+todo
+
 ### references
 
-- [React](https://react.dev)
-- [TailwindCSS](https://tailwindcss.com)
-- [MongoDB](https://www.mongodb.com)
-- [Express](https://expressjs.com)
-- [mongoose](https://mongoosejs.com)
-- [dotenv](https://www.npmjs.com/package/dotenv)
-- [JSON Web Tokens](https://jwt.io)
-- [axios](https://axios-http.com/docs/intro)
-
-### YouTube
-
-- [Build a Fullstack CHAT App using MERN (mongo, express, react, node)](https://youtu.be/mYy-d6BtqmU?si=Cuy8shkEPhlUJKFp)
+- [Build and Deploy a Full Stack MERN Next.js 13 Threads App | React, Next JS, TypeScript, MongoDB](https://youtu.be/O5cmLDVTgAs?si=O_MGS7DdcwJ1fjo2)
